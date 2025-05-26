@@ -1,2 +1,3 @@
-# Baseball-Game
-hamakko branch
+# Baseball
+
+Hamakko Branch
