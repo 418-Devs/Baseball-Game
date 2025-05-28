@@ -15,7 +15,14 @@ class BaseballController {
         while set.count < 3 {
             set.insert(Int.random(in: 0...9))
         }
-        model.computerNumber = Array(set)
+        var comArray = Array(set)
+        
+        if comArray[0] == 0{
+            if let idx = comArray.firstIndex(where: { $0 != 0 }) {
+                comArray.swapAt(0, idx)
+            }
+        }
+        model.computerNumber = comArray
     }
     
     func showComNumber() {
