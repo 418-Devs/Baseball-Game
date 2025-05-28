@@ -13,7 +13,7 @@ class BaseballController {
     func computerNumber() {
         var set = Set<Int>()
         while set.count < 3 {
-            set.insert(Int.random(in: 1...9))
+            set.insert(Int.random(in: 0...9))
         }
         model.computerNumber = Array(set)
     }
@@ -23,7 +23,7 @@ class BaseballController {
     }
     
     func userInput(){
-        print("1~9 사이의 숫자 3개를 입력하세요.")
+        print("0~9 사이의 숫자 3개를 입력하세요.")
         guard let input = readLine() else { return }
         if inputCheck(inputcheck: input){
             let numbers = input.map{Int(String($0))!}
@@ -41,7 +41,7 @@ class BaseballController {
     func inputCheck(inputcheck: String) -> Bool {
         let chars = Array(inputcheck)
         for i in 0..<chars.count {
-            if Int(String(chars[i])) == nil || Int(String(chars[i])) == 0 {
+            if Int(String(chars[i])) == nil || Int(String(chars[0])) == 0 {
                 print("올바르지 않은 입력값 입니다.")
                 return false
             }
