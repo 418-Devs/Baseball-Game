@@ -7,8 +7,10 @@
 import Foundation
 
 struct BaseballModel{
+    var stateSelect: Int = 0
     var computerNumber: [Int] = []
     var userNumber: [Int] = []
     var result: Bool = false
+    var record: [Int] = []
 }
 

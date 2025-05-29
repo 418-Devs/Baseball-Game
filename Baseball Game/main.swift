@@ -7,13 +7,6 @@
 
 import Foundation
 
-let controller = BaseballController()
-
-controller.computerNumber()
-controller.showComNumber()
-while !controller.model.result{
-    controller.userInput()
-    controller.game()
-}
-
+var view = BaseballView()
+view.run()
 
