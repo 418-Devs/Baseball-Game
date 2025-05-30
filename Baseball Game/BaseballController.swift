@@ -9,9 +9,9 @@ import Foundation
 
 class BaseballController {
     var model = BaseballModel()
-    var tryCount = 0
-    var roundCount = 0
+    var record = RecordModel()
 
+    var tryCount: Int = 0
     
     // 게임 상태 사용자 입력
     func inputStatus() {
@@ -34,6 +34,7 @@ class BaseballController {
             }
         }
         model.computerNumber = comArray
+        
     }
     
     // 컴퓨터 난수 show
@@ -60,6 +61,7 @@ class BaseballController {
         print("유저의 숫자는 \(model.userNumber)입니다.")
     }
     
+    // 유저입력 체크 (중복값,숫자,3자리수 판별)
     func inputCheck(inputcheck: String) -> Bool {
         let chars = Array(inputcheck)
         for i in 0..<chars.count {
@@ -82,7 +84,7 @@ class BaseballController {
     func game() {
         var strike:Int = 0
         var ball:Int = 0
-        
+
         for i in 0...2{
             if model.computerNumber[i] == model.userNumber[i] {
                 strike += 1
@@ -96,9 +98,9 @@ class BaseballController {
         if strike == 3 {
             print("3 strikes! 게임 승리!")
             model.result = true
-            roundCount += 1
-            model.record.insert(tryCount, at: roundCount-1)
-            tryCount = 0;
+            record.tryCount.append(tryCount)
+            tryCount = 0
+            record.playround += 1
             
         }
         else if strike == 0 && ball == 0 {
@@ -110,11 +112,11 @@ class BaseballController {
     }
     // 게임기록 보기
     func readRecord(){
-        if model.record.isEmpty {
+        if record.tryCount.isEmpty {
             print("아직 기록이 없습니다.")
         } else {
-            for i in 0..<model.record.count{
-                print("\(i+1)회차 시도 횟수 : \(model.record[i])")
+            for i in 0..<record.playround{
+                print("\(i+1)회차 시도 횟수 : \(record.tryCount[i])")
             }
         }
     }

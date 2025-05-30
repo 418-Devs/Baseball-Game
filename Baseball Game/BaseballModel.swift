@@ -11,6 +11,5 @@ struct BaseballModel{
     var computerNumber: [Int] = []
     var userNumber: [Int] = []
     var result: Bool = false
-    var record: [Int] = []
 }
 
